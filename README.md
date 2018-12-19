@@ -11,11 +11,11 @@
 
 ## Install
    
-    ```js
+    
       git clone https://github.com/ysfmag/serverless-python-template.git
       cd serverless-python-template
       npm install
-    ```
+    
    
 ## Serverless
 
