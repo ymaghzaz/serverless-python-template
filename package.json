@@ -1,0 +1,16 @@
+{
+  "name": "model_ml_serverless_reco",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "deploy:dev": "sls deploy -r eu-west-1 --stage dev --verbose",
+    "test:local": "serverless invoke local -f hello -p test.json",
+    "reco:local": "serverless invoke local -f reco -p test.json",
+    "reco:aws": "serverless invoke  -f reco -p test.json  --stage dev  -r eu-west-1 ",
+    "test:aws": "serverless invoke  -f hello -p test.json --stage dev  -r eu-west-1 "
+  },
+  "dependencies": {
+    "serverless-python-requirements": "^4.2.5"
+  }
+}

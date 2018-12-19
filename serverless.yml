@@ -1,0 +1,37 @@
+
+service: ml-model-reco-v1 # NOTE: update this with your service name
+
+plugins:
+ - serverless-python-requirements
+
+custom:
+ pythonRequirements:
+   dockerizePip: non-linux
+
+provider:
+  name: aws
+  runtime: python3.6
+  deploymentBucket: model-ml-serverless
+  role: "arn:aws:iam::382857135464:role/ml_model"
+
+stage: ${opt:stage, 'dev'}
+region: ${opt:region, 'eu-west-1'}
+
+functions:
+  hello:
+    handler: handler.hello
+    memorySize: 2880
+    events:
+      - http:
+          path: hello
+          method: get
+          cors: true
+  reco:
+    handler: reco.run
+    memorySize: 2880
+    events:
+      - http:
+          path: reco
+          method: get
+          cors: true
+
